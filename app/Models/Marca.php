@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notifiable;
 
 class Marca extends Model
 {
-      protected $primaryKey = 'Id';
+      protected $primaryKey = 'marca_Id';
     protected $table = 'marca';
     protected $fillable = ['Marca',];
     public  $timestamps   = false;

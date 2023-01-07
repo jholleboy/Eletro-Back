@@ -17,8 +17,7 @@ class EletroController extends Controller
      */
     public function index()
     {
-        $Eletro = Eletro::join('Marca', 'Marca.Id', '=', 'eletros.Marca')->join('Tensao', 'Tensao.Id', '=', 'eletros.Tensao')->get();
-
+        $Eletro = Eletro::join('Marca', 'Marca.marca_Id', '=', 'eletros.Marca')->join('Tensao', 'Tensao.tensao_Id', '=', 'eletros.Tensao')->get();
         return response()->json($Eletro);
       
     }

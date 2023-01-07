@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 05-Jan-2023 às 02:00
+-- Tempo de geração: 07-Jan-2023 às 16:35
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 7.4.29
 
@@ -40,7 +40,7 @@ CREATE TABLE `eletros` (
 --
 
 INSERT INTO `eletros` (`Id`, `Nome`, `Descricao`, `Tensao`, `Marca`) VALUES
-(1, 'Geladeira Frost Free', 'Este produto é totalmente versátil. Tudo para ser\npersonalizado para comportar o que você preferir', 2, 1);
+(1, 'Notebook i5', 'Este produto é totalmente versátil. Tudo para ser personalizado para comportar o que você preferir', 1, 3);
 
 -- --------------------------------------------------------
 
@@ -49,7 +49,7 @@ INSERT INTO `eletros` (`Id`, `Nome`, `Descricao`, `Tensao`, `Marca`) VALUES
 --
 
 CREATE TABLE `marca` (
-  `Id` int(10) NOT NULL,
+  `marca_Id` int(10) NOT NULL,
   `Marca` varchar(225) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -57,9 +57,11 @@ CREATE TABLE `marca` (
 -- Extraindo dados da tabela `marca`
 --
 
-INSERT INTO `marca` (`Id`, `Marca`) VALUES
+INSERT INTO `marca` (`marca_Id`, `Marca`) VALUES
 (1, 'Electrolux'),
-(2, 'Brastemp');
+(2, 'Brastemp'),
+(3, 'Dell'),
+(4, 'Philco');
 
 -- --------------------------------------------------------
 
@@ -68,7 +70,7 @@ INSERT INTO `marca` (`Id`, `Marca`) VALUES
 --
 
 CREATE TABLE `tensao` (
-  `Id` int(10) NOT NULL,
+  `tensao_Id` int(10) NOT NULL,
   `Tensao` varchar(225) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -76,9 +78,10 @@ CREATE TABLE `tensao` (
 -- Extraindo dados da tabela `tensao`
 --
 
-INSERT INTO `tensao` (`Id`, `Tensao`) VALUES
+INSERT INTO `tensao` (`tensao_Id`, `Tensao`) VALUES
 (1, '220v'),
-(2, '110v');
+(2, '110v'),
+(8, 'Bi-Volt');
 
 --
 -- Índices para tabelas despejadas
@@ -96,13 +99,13 @@ ALTER TABLE `eletros`
 -- Índices para tabela `marca`
 --
 ALTER TABLE `marca`
-  ADD PRIMARY KEY (`Id`);
+  ADD PRIMARY KEY (`marca_Id`);
 
 --
 -- Índices para tabela `tensao`
 --
 ALTER TABLE `tensao`
-  ADD PRIMARY KEY (`Id`);
+  ADD PRIMARY KEY (`tensao_Id`);
 
 --
 -- AUTO_INCREMENT de tabelas despejadas
@@ -112,19 +115,19 @@ ALTER TABLE `tensao`
 -- AUTO_INCREMENT de tabela `eletros`
 --
 ALTER TABLE `eletros`
-  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de tabela `marca`
 --
 ALTER TABLE `marca`
-  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `marca_Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de tabela `tensao`
 --
 ALTER TABLE `tensao`
-  MODIFY `Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `tensao_Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Restrições para despejos de tabelas
@@ -134,8 +137,8 @@ ALTER TABLE `tensao`
 -- Limitadores para a tabela `eletros`
 --
 ALTER TABLE `eletros`
-  ADD CONSTRAINT `eletros_ibfk_1` FOREIGN KEY (`Tensao`) REFERENCES `tensao` (`Id`),
-  ADD CONSTRAINT `eletros_ibfk_2` FOREIGN KEY (`Marca`) REFERENCES `marca` (`Id`);
+  ADD CONSTRAINT `eletros_ibfk_1` FOREIGN KEY (`Tensao`) REFERENCES `tensao` (`tensao_Id`),
+  ADD CONSTRAINT `eletros_ibfk_2` FOREIGN KEY (`Marca`) REFERENCES `marca` (`marca_Id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
