@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Http\Controllers;
 use App\Models\Eletro;
+use App\Models\Marca;
+use App\Models\Tensao;
 use Illuminate\Http\Request;
 
 
@@ -15,8 +17,8 @@ class EletroController extends Controller
      */
     public function index()
     {
-        
-        $Eletro = Eletro::all();
+        $Eletro = Eletro::join('Marca', 'Marca.Id', '=', 'eletros.Marca')->join('Tensao', 'Tensao.Id', '=', 'eletros.Tensao')->get();
+
         return response()->json($Eletro);
       
     }
