@@ -81,7 +81,7 @@ CREATE TABLE `tensao` (
 INSERT INTO `tensao` (`tensao_Id`, `Tensao`) VALUES
 (1, '220v'),
 (2, '110v'),
-(8, 'Bi-Volt');
+(3, 'Bi-Volt');
 
 --
 -- Índices para tabelas despejadas
